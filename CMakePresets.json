@@ -1,0 +1,59 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "ninja",
+            "displayName": "Configure ninja",
+            "description": "Configure ninja",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
+            }
+        },
+        {
+            "name": "msvc-x64",
+            "displayName": "Visual Studio Community 2022 Preview - amd64",
+            "description": "Using compilers for Visual Studio 17 2022 (x64 architecture)",
+            "generator": "Visual Studio 17 2022",
+            "toolset": "host=x64",
+            "architecture": "x64",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_CXX_COMPILER": "cl.exe"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "ninja-debug",
+            "description": "Build ninja Debug",
+            "displayName": "Build ninja Debug",
+            "configurePreset": "ninja",
+            "configuration": "Debug",
+            "targets": "all"
+        },
+        {
+            "name": "ninja-release",
+            "description": "Build ninja Release",
+            "displayName": "Build ninja Release",
+            "configurePreset": "ninja",
+            "configuration": "Release",
+            "targets": "all"
+        },
+        {
+            "name": "msvc-x64-debug",
+            "displayName": "Visual Studio Community 2022 Preview - amd64 - Debug",
+            "configurePreset": "msvc-x64",
+            "configuration": "Debug"
+        },
+        {
+            "name": "msvc-x64-release",
+            "displayName": "Visual Studio Community 2022 Preview - amd64 - Release",
+            "configurePreset": "msvc-x64",
+            "configuration": "Release"
+        }
+    ]
+}
